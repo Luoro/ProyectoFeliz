@@ -1,6 +1,7 @@
 ---
 import Container from "@/components/container.astro";
 import { getFormattedDate } from "@/utils/all";
+import { BASE_PATH } from "@/utils/constants";
 import Layout from "./Layout.astro";
 
 const { frontmatter } = Astro.props;
@@ -40,7 +41,7 @@ const { frontmatter } = Astro.props;
     </div>
     <div class="text-center mt-8">
       <a
-        href="/blog"
+        href={`${BASE_PATH}/blog`}
         class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
         >← Back to Blog</a
       >
