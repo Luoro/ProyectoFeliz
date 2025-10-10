@@ -1,54 +1,25 @@
 ---
-import { getCollection } from "astro:content";
-import { Picture } from "astro:assets";
 import Layout from "@/layouts/Layout.astro";
 import Sectionhead from "@/components/sectionhead.astro";
-
-// Filter team entries with 'draft: false' & date before current date
-const publishedTeamMembers = await getCollection("team", ({ data }) => {
-  return !data.draft && data.publishDate < new Date();
-});
 ---
 
 <Layout title="About">
   <Sectionhead>
-    <Fragment slot="title">About</Fragment>
-    <Fragment slot="desc">Acompañamos a las familias en el uso responsable y seguro de la tecnologia</Fragment>
+    <Fragment slot="title">Mision</Fragment>
+    <Fragment slot="desc">Asylon tiene su origen en el griego y significa: “se refiere a un lugar o persona que es considerado inviolable o "que no puede ser tomado", del cual nadie puede ser expulsado o perturbado sin permiso. En la antigua Grecia, tenía dos significados principales: la garantía de seguridad concedida a personas como atletas o embajadores, y el refugio sagrado ofrecido por templos a personas perseguidas, haciendo valer el valor de la hospitalidad y la inviolabilidad de lugares sagrados.” 
+Teniendo en cuenta la constante evolución de la tecnología, los riesgos y consecuencias de sus usos, y las personas como individuo necesario para su adopción, adaptación, mejora y consumo es que Asylon comparte y difunde material educativo sobre las mismas y su impacto a fin que las familias e instituciones puedan entender las tecnologías que los rodea y desde ese entendimiento poder decidir en libertad que adoptar o no.
+</Fragment>
+    <Fragment slot="title">Vision</Fragment>
+    <Fragment slot="desc">
+Se entiende que una postura 100 % cerrada a la tecnología no es posible como tampoco lo es una adopción 100% sin ninguna clase de evaluación y entendimiento de lo que estamos aceptando. Es a través de este entendimiento que cada familia o institución, aceptará un nivel de tolerancia a su uso y con ello podrá con total independencia elegir cuales son sus permitidos y cuáles no.
+Asylon es una plataforma con fines educativos orientada a la divulgación de contenido permitiendo a aquellos que lo necesitan ser un un mapa de papel con el cual cada individuo pueda elegir el camino que le resulta más interesante y no simplemente el más corto o con menos congestión de tráfico o el más elegido como lo haría un gps.
+  </Fragment>
   </Sectionhead>
-
-  <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
     <h2 class="font-bold text-3xl text-gray-800">
       No hay cosas que temer, solo hay cosas que comprender.
     </h2>
-    <p class="text-lg leading-relaxed text-slate-500">
-      We're a multi-cultural team from around the world! We come from diverse
-      backgrounds, bringing different personalities, experiences and skills to
-      the job. This is what makes our team so special.
-    </p>
   </div>
   <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
-    {
-      publishedTeamMembers.map((teamMemberEntry) => (
-        <div class="group">
-          <div class="w-full aspect-square">
-            <Picture
-              src={teamMemberEntry.data.avatar.src}
-              alt={teamMemberEntry.data.avatar.alt}
-              sizes="(max-width: 800px) 100vw, 400px"
-              width={400}
-              height={400}
-              class="w-full rounded-sm transition group-hover:-translate-y-1 group-hover:shadow-xl bg-white object-cover object-center aspect-square"
-            />
-          </div>
-
-          <div class="mt-4 text-center">
-            <h2 class="text-lg text-gray-800">{teamMemberEntry.data.name}</h2>
-            <h3 class="text-sm text-slate-500">
-              {teamMemberEntry.data.title}
-            </h3>
-          </div>
-        </div>
-      ))
-    }
+ 
   </div>
 </Layout>
